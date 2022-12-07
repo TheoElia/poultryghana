@@ -38,6 +38,7 @@ class Record(TimeStamp):
     date_received = models.DateField(null=True)
     month = models.CharField(max_length=255,null=True)
     breed = models.CharField(max_length=255,null=True)
+    production_type = models.CharField(max_length=255,null=True)
     farm = models.ForeignKey(Farm,on_delete=models.CASCADE,null=True,related_name="records")
 
     def __str__(self):
@@ -50,7 +51,6 @@ class PoultryRecord(TimeStamp):
     culls_minus = models.FloatField(null=True)
     date = models.DateField(null=True)
     age = models.FloatField(null=True,help_text="in weeks")
-    production_type = models.CharField(max_length=255,null=True)
     no_of_animals = models.IntegerField(null=True)
     water = models.FloatField(null=True)
     mortality = models.FloatField(null=True)

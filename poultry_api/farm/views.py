@@ -58,31 +58,33 @@ def get_poultry_record_records(request):
         validated_data = data.get("validated_data")
         # get farm, prefetch records
         record = Record.objects.filter(id=int(validated_data.get("record"))).prefetch_related("weekly_records")
-        average_mortality = 0
-        average_egg_production = 0
+        mortality_perc = 0
+        production_perc = 0
         avg_egg_prod_morn = 0
         avg_egg_prod_aft = 0
         avg_egg_prod_evn = 0
         if record:
             record = record[0]
-            total_mortality = record.weekly_records.aggregate(total=Sum("mortality"))
+            no_of_birds = record.weekly_records.aggregate(total=Sum("no_of_animals")).get("total") or 0
+            total_mortality = record.weekly_records.aggregate(total=Sum("mortality")).get("total") or 0
             total_count = record.weekly_records.count()
             if total_count == 0:
                 total_count = 1
-            average_mortality = total_mortality.get("total") or 0/total_count
+            mortality_perc = (total_mortality/no_of_birds)*100
             total_egg_prod_morn = record.weekly_records.aggregate(total=Sum("egg_production_morning")).get("total") or 0
             total_egg_prod_aft = record.weekly_records.aggregate(total=Sum("egg_production_afternoon")).get("total") or 0
             total_egg_prod_evn = record.weekly_records.aggregate(total=Sum("egg_production_evening")).get("total") or 0
             avg_egg_prod_morn = total_egg_prod_morn/total_count
             avg_egg_prod_aft = total_egg_prod_aft/total_count
             avg_egg_prod_evn = total_egg_prod_evn/total_count
-            average_egg_production = (total_egg_prod_morn +total_egg_prod_aft +total_egg_prod_evn)/total_count
+            
+            production_perc = ((total_egg_prod_morn +total_egg_prod_aft +total_egg_prod_evn)/no_of_birds)*100
         summary = {
-            "average_mortality":average_mortality,
+            "mortality_perc":mortality_perc,
             "average_egg_production_morning":avg_egg_prod_morn,
             "average_egg_production_afternoon":avg_egg_prod_aft,
             "average_egg_production_evening":avg_egg_prod_evn,
-            "average_egg_production":average_egg_production
+            "production_perc":production_perc
         }
         resp["success"]=True
         resp["records"]=[i for i in record.weekly_records.all()]
