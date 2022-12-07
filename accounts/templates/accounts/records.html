@@ -539,6 +539,8 @@
 														<th class="bg-transparent border-bottom-0 wp-15">Pen No</th>
 														<th class="bg-transparent border-bottom-0">Date</th>
 														<th class="bg-transparent border-bottom-0">Age (Wks)</th>		
+                                                        <th class="bg-transparent border-bottom-0">Culls (+)</th>
+                                                        <th class="bg-transparent border-bottom-0">Culls (-)</th>
 														<th class="bg-transparent border-bottom-0">Egg Production (Mrn)</th>
 														<th class="bg-transparent border-bottom-0">Egg Production (Aft)</th>
 														<th class="bg-transparent border-bottom-0">Egg Production (Evn)</th>
@@ -1119,7 +1121,7 @@
     //     				</div>`
 
     function constructOrderTableRow(obj){
-        var data = ["{{record.pen_no}}",obj.date,`${obj.age} weeks`,obj.egg_production_morning,obj.egg_production_afternoon,obj.egg_production_evening,obj.water,obj.no_of_animals,obj.mortality,obj.medication,obj.remarks];
+        var data = ["{{record.pen_no}}",obj.date,`${obj.age} weeks`,obj.culls_plus,obj.culls_minus,obj.egg_production_morning,obj.egg_production_afternoon,obj.egg_production_evening,obj.water,obj.no_of_animals,obj.mortality,obj.medication,obj.remarks];
         return data;
     };
 
