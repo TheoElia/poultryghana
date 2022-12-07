@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UMerchant vendor registration page">
+    <meta name="author" content="Pywe">
+    <title>Poultry Ghana | Login</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="/static/register/static/img/um.jpeg" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="/static/register/static/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/static/register/static/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="/static/register/static/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="/static/register/static/img/apple-touch-icon-144x144-precomposed.png">
+
+    <!-- GOOGLE WEB FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="/static/register/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/register/static/css/style.css" rel="stylesheet">
+	<link href="/static/register/static/css/vendors.css" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="/static/register/static/css/custom.css" rel="stylesheet">
+    <style>
+        #toast {
+              visibility: hidden;
+              min-width: 250px;
+              margin-left: -125px;
+              background-color: #333;
+              color: #fff;
+              text-align: center;
+              border-radius: 2px;
+              padding: 16px;
+              position: fixed;
+              z-index: 1;
+              left: 40%;
+              top: 150px;
+              font-size: 17px;
+              border-radius:15px;
+            }
+
+            #toast.show {
+              visibility: visible;
+              -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+              animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            }
+    </style>
+
+</head>
+
+<body class="bg_color_gray">
+
+<div id="preloader">
+    <div data-loader="circle-side"></div>
+</div><!-- /Preload -->
+<div id="loader_form">
+    <div data-loader="circle-side-2"></div>
+</div><!-- /loader_form -->
+
+<div class="min-vh-100 d-flex flex-column">
+
+    <header>
+        <div class="container-fluid">
+            <div class="row d-flex align-items-center">
+                <div class="col-4">
+                    <a data-bs-toggle="offcanvas" href="#offcanvasNav" role="button" class="btn_nav"><i class="bi bi-list"></i></a>
+                </div>
+                <div class="col-12 text-center">
+                     <a href="/">
+                        <!-- <img src="/static/register/static/img/um.jpeg" alt="" class="img-fluid" width="95" height="30"> -->
+                        <h3 class="text-secondary">Poultry Ghana</h3>
+                    </a>
+                    <h5>Welcome to Poultry Ghana</h5>
+                </div>
+                <!--<div class="col-4">-->
+                <!--    <div id="social">-->
+                <!--        <ul>-->
+                <!--            <li><a href="#0"><i class="bi bi-facebook"></i></a></li>-->
+                <!--            <li><a href="#0"><i class="bi bi-twitter"></i></a></li>-->
+                <!--            <li><a href="#0"><i class="bi bi-instagram"></i></a></li>-->
+                <!--        </ul>-->
+                <!--    </div>-->
+                    <!-- /social -->
+                <!--</div>-->
+            </div>
+        </div>
+        <!-- /container -->
+    </header>
+    <!-- /header -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
+	    <div class="offcanvas-header">
+	        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	    </div>
+	    <div class="offcanvas-body">
+	        <ul>
+	            <li><a href="/register" class="animated_link active">Registration</a></li>
+	            <li><a href="javascript:void(0);" class="animated_link">Dashboard</a></li>
+	            <!--<li><a href="review.html" class="animated_link">Review</a></li>-->
+	            <!--<li><a href="quotation.html" class="animated_link">Quotation</a></li>-->
+	        </ul>
+	        <!--<hr>-->
+	        <!--<ul>-->
+	        <!--    <li><a href="about.html" class="animated_link">About</a></li>-->
+	        <!--    <li><a href="contact.html" class="animated_link">Contacts</a></li>-->
+	        <!--    <li><a href="#0" class="animated_link">Purchase this template</a></li>-->
+	        <!--</ul>-->
+	    </div>
+	</div>
+	<!-- /offcanvas nav -->
+
+    <div class="container-fluid d-flex flex-column my-auto">
+
+        <div id="wizard_container">
+
+            <div id="top-wizard">
+                <div id="progressbar"></div>
+            </div>
+            <!-- /top-wizard -->
+
+            <form id="wrapped" method="DIALOG" action="#">
+                <input id="website" name="website" type="text" value="">
+                <!-- Leave input above for security protection, read docs for details -->
+
+                <div id="middle-wizard">
+                    <!-- <div class="step">
+                        <div class="question_title">
+                            <h3>Please choose a date!</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <div class="clearfix position-relative mb-3" id="inline-calendar">
+                                    <input type="text" name="dates" id="dates" class="required" hidden="hidden">
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- /Step -->
+
+                    <div class="submit step">
+                        <div class="question_title">
+                            <h5>Login</h5>
+                            <p>Please login with your registered details</p>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="username" id="phone" class="form-control required" placeholder="Your Username">
+                                    <label for="phone">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" id="password" class="form-control required" placeholder="Enter Your Password">
+                                    <label for="password">Enter Your Password</label>
+                                </div>
+                                <div>
+                                    Don't have an account? <a href="/register">Create An Account</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /Step -->
+
+
+
+
+                    <!--<div class="submit step">-->
+                    <!--    <div class="question_title">-->
+                    <!--        <h5>Upload Business Files and You Are Done</h5>-->
+                    <!--        <p>Please make sure the information you provide here is accurate as well</p>-->
+                    <!--    </div>-->
+                    <!--    <div class="row justify-content-center">-->
+                    <!--        <div class="col-md-12">-->
+                    <!--            <div class="mb-3 form-floating">-->
+                    <!--                <input type="file" name="business_certificate" id="certificate" class="form-control required" placeholder="Business certificate">-->
+                    <!--                <label for="certificate">Business Certificate</label>-->
+                    <!--            </div>-->
+                    <!--            <div class="mb-3 form-floating">-->
+                    <!--                <input type="file" name="ghana_card" id="ghana_card" class="form-control required" placeholder="Your Ghana Card">-->
+                    <!--                <label for="position">Ghana Card</label>-->
+                    <!--            </div>-->
+                    <!--            <div class="mb-3 form-floating">-->
+                    <!--                <input type="file" name="logo" id="logo" class="form-control required" placeholder="Your Shop Logo">-->
+                    <!--                <label for="logo">Shop Logo (Optional)</label>-->
+                    <!--            </div>-->
+                    <!--             <div class="terms">-->
+                    <!--                <label class="container_check">Please accept our <a href="#" data-bs-toggle="modal" data-bs-target="#terms-txt">Terms and conditions</a>-->
+                    <!--                    <input type="checkbox" name="terms" value="Yes" class="required">-->
+                    <!--                    <span class="checkmark"></span>-->
+                    <!--                </label>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                        <!-- /row -->
+                    <!--</div>-->
+                    <!-- /Step -->
+
+                </div>
+                <!-- /middle-wizard -->
+
+                <div id="bottom-wizard">
+                    <button type="button" name="backward" class="backward btn_1">Backward</button>
+                    <button type="button" name="forward" class="forward btn_1 ciao">Forward</button>
+                    <button type="submit" name="process" class="submit btn_1">Submit</button>
+                </div>
+                <!-- /bottom-wizard -->
+
+            </form>
+        </div>
+        <!-- /Wizard container -->
+    </div>
+    <!-- /Container -->
+<div id="toast"></div>
+    <footer>
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <p>© 2022 Poultry Ghana | <a href="http://www.twitter.com/oyibistevejobs">By Oyibistevejobs</a></p>
+                </div>
+                <div class="col-sm-6 text-md-end">
+                    <a class="btn_help btn" href="#modal-help" id="modal_h"><i class="bi bi-question-circle"> Help</i></a>
+                </div>
+            </div>
+            <!-- /Row -->
+        </div>
+        <!-- /Container -->
+    </footer>
+    <!-- /Footer -->
+
+</div>
+<!-- /flex-column -->
+
+<!-- Help form Popup -->
+<div id="modal-help" class="custom-modal zoom-anim-dialog mfp-hide">
+    <div class="small-dialog-header">
+        <h3>Ask Us Anything</h3>
+        <p class="mb-3">Please fill the form with your questions and<br>we will reply soon!</p>
+    </div>
+    <div id="message-help"></div>
+    <form method="post" action="#" id="helpform" autocomplete="off">
+        <div class="modal-wrapper">
+            <div class="mb-3 form-floating">
+                <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Full Name">
+                <label for="fullname">Full Name</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <input type="email" name="email_help" id="email_help" class="form-control" placeholder="Email Address">
+                <label for="email_help">Email Address</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <textarea name="message_help" id="message_help" class="form-control" placeholder="Your Message"></textarea>
+                <label for="message_help">Your Message</label>
+            </div>
+            <div class="mb-5 form-floating">
+                <input class="form-control" type="text" name="verify_help" id="verify_help" placeholder="Are you human? 3 + 1 =">
+                <label for="verify_help">Are you human? 3 + 1 =</label>
+            </div>
+            <div class="text-center submit"><input type="submit" value="Submit" class="btn_1" id="submit-help"></div>
+        </div>
+    </form>
+</div>
+<!-- /Help form Popup -->
+
+<!-- Modal terms -->
+<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="termsLabel">Terms and conditions</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in <strong>nec quod novum accumsan</strong>, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus. Lorem ipsum dolor sit amet, <strong>in porro albucius qui</strong>, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+            </div>
+        </div>
+        <!-- /modal-content -->
+    </div>
+    <!-- /modal-dialog -->
+</div>
+<!-- /modal -->
+
+<!-- COMMON SCRIPTS -->
+<script src="/static/register/static/js/common_scripts.min.js"></script>
+<script src="/static/register/static/js/common_functions.js"></script>
+<script src="/static/register/static/assets/validate.js"></script>
+
+<!-- SPECIFIC SCRIPTS -->
+<!--<script src="/static/register/static/js/reservation_wizard_func.js"></script>-->
+<script src="/static/register/static/js/daterangepicker_func.js"></script>
+<script src="https://pharst.pywe.org/static/js/axios.min.js"></script>
+<script>
+function buildForm(id){
+   let myForm = document.getElementById(id);
+   let formData = new FormData(myForm);
+   //This will build the form from name, value pairs
+   var obj = {}
+   var all = []
+   for(var pair of formData.entries()){
+       var name = pair[0]
+       var val = pair[1]
+       obj[name]=val
+   }
+   return obj
+}
+function exists(ele){if (ele !== null && ele !== undefined && ele !== "null"){return true}else{return false}};
+   function toast(msg,time) {
+   var x = document.getElementById("toast");
+   x.innerHTML = msg;
+   x.className = "show";
+   setTimeout(function(){ x.className = x.className.replace("show", ""); }, time);
+   }
+
+function loginUser(){
+    toast("signing in user...",3000);
+    var form = buildForm("wrapped");
+    form.notification_token = "no-key";
+    form.as_vendor = true;
+    axios.post('/api/v1/accounts/auth/login-user/',form)
+		.then(function (response) {
+			console.log(response);
+			var d = response.data
+			if(d.success){
+				// we are done registering user, let create a shop now
+                $("#loader_form").fadeOut();
+                if(d.user){
+                    toast("redirecting to dashboard...",3000);
+                    localStorage.setItem("user",JSON.stringify(d.user));
+                    if(d.user.user_type == "poultry_farmer"){
+                        if(exists(d.user.farm)){
+                            window.location.assign("/dashboard/");
+                        }else{
+                            window.location.assign("/add-farm");
+                        }
+                    }
+                    
+                }
+			}else{
+                console.log("not successful")
+			 //   $('#preloader').delay(350).fadeOut('slow');
+                $("#loader_form").fadeOut();
+                toast(d.message,5000);
+			}
+		})
+		.catch(function (error) {
+			console.log(error);
+			// toast("Sorry, an error occured",5000);
+			if (exists(error.response)){
+			console.log(error.response.data);
+			}
+		});
+    };
+
+
+  	// Submit loader mask
+	var form = $("form#wrapped");
+	form.on('submit', function (event) {
+	    event.preventDefault();
+		form.validate();
+		if (form.valid()) {
+			$("#loader_form").fadeIn();
+			console.log(buildForm("wrapped"));
+			loginUser();
+		}
+	});
+
+
+</script>
+
+</body>
+</html>

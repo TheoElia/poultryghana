@@ -1,0 +1,105 @@
+/*-------- COLOR NAVY--------*/
+/*-------- Preloader --------*/
+[data-loader="circle-side"] {
+  border: 2px solid #4a5d7d;
+}
+
+[data-loader="circle-side-2"] {
+  border: 2px solid #4a5d7d;
+}
+
+/*-------- Typography --------*/
+a.animated_link:before {
+  background-color: #4a5d7d;
+}
+
+a.animated_link.active:before {
+  background-color: #4a5d7d;
+}
+
+/*General links color*/
+a {
+  color: #4a5d7d;
+}
+a:hover, a:focus {
+  color: #111;
+  text-decoration: none;
+  outline: none;
+}
+
+/*-------- Buttons --------*/
+a.btn_1,
+.btn_1 {
+  color: #fff;
+  background: #4a5d7d;
+  -webkit-box-shadow: 0px 10px 40px -10px rgba(74, 93, 125, 0.5);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(74, 93, 125, 0.5);
+  box-shadow: 0px 10px 40px -10px rgba(74, 93, 125, 0.5);
+}
+
+a.btn_nav {
+  color: #111;
+}
+a.btn_nav:hover {
+  color: #4a5d7d;
+}
+
+a.btn_help {
+  background-color: #ddd;
+}
+a.btn_help:hover {
+  background-color: #4a5d7d;
+  color: #fff;
+}
+a.btn_help:focus {
+  box-shadow: none;
+}
+
+/*-------- Structure --------*/
+#social ul li a:hover {
+  color: #4a5d7d;
+}
+
+/*-------- Carousel Nav --------*/
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #4a5d7d !important;
+}
+
+/*-------- Datepicker --------*/
+.daterangepicker td.in-range {
+  background-color: #e4e7ec !important;
+}
+
+.daterangepicker td.active, .daterangepicker td.active:hover {
+  background-color: #4a5d7d !important;
+}
+
+/*-------- Forms --------*/
+input.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+  border-color: rgba(74, 93, 125, 0.2);
+  box-shadow: 0 0 0 0.3rem rgba(74, 93, 125, 0.05);
+}
+
+.checkbox_radio_container input[type="checkbox"]:checked ~ .wrapper, .checkbox_radio_container input[type="radio"]:checked ~ .wrapper {
+  background-color: #4a5d7d;
+}
+
+.container_check input:checked ~ .checkmark {
+  background-color: #4a5d7d;
+}
+
+.checkbox_radio_container .radio:after,
+.checkbox_radio_container .checkbox:after {
+  background: #4a5d7d;
+}
+.checkbox_radio_container .radio:before,
+.checkbox_radio_container .checkbox:before {
+  background: #4a5d7d;
+}
+
+#message-help .error_message {
+  color: #4a5d7d;
+}

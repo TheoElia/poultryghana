@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="UMerchant vendor registration page">
+    <meta name="author" content="Pywe">
+    <title>UMerchant | Privacy Policy</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="/static/register/static/img/um.jpeg" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="/static/register/static/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/static/register/static/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="/static/register/static/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="/static/register/static/img/apple-touch-icon-144x144-precomposed.png">
+
+    <!-- GOOGLE WEB FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="/static/register/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/register/static/css/style.css" rel="stylesheet">
+	<link href="/static/register/static/css/vendors.css" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="/static/register/static/css/custom.css" rel="stylesheet">
+    <style>
+        #toast {
+              visibility: hidden;
+              min-width: 250px;
+              margin-left: -125px;
+              background-color: #333;
+              color: #fff;
+              text-align: center;
+              border-radius: 2px;
+              padding: 16px;
+              position: fixed;
+              z-index: 1;
+              left: 40%;
+              top: 150px;
+              font-size: 17px;
+              border-radius:15px;
+            }
+
+            #toast.show {
+              visibility: visible;
+              -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+              animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            }
+    </style>
+
+</head>
+
+<body class="bg_color_gray">
+
+<div id="preloader">
+    <div data-loader="circle-side"></div>
+</div><!-- /Preload -->
+<div id="loader_form">
+    <div data-loader="circle-side-2"></div>
+</div><!-- /loader_form -->
+
+<div class="min-vh-100 d-flex flex-column">
+
+    <header>
+        <div class="container-fluid">
+            <div class="row d-flex align-items-center">
+                <div class="col-4">
+                    <a data-bs-toggle="offcanvas" href="#offcanvasNav" role="button" class="btn_nav"><i class="bi bi-list"></i></a>
+                </div>
+                <div class="col-12 text-center">
+                     <a href="/"><img src="/static/register/static/img/um.jpeg" alt="" class="img-fluid" width="95" height="30"></a>
+                    <h3>UMerchant Privacy Policy</h3>
+                </div>
+                <!--<div class="col-4">-->
+                <!--    <div id="social">-->
+                <!--        <ul>-->
+                <!--            <li><a href="#0"><i class="bi bi-facebook"></i></a></li>-->
+                <!--            <li><a href="#0"><i class="bi bi-twitter"></i></a></li>-->
+                <!--            <li><a href="#0"><i class="bi bi-instagram"></i></a></li>-->
+                <!--        </ul>-->
+                <!--    </div>-->
+                    <!-- /social -->
+                <!--</div>-->
+            </div>
+        </div>
+        <!-- /container -->
+    </header>
+    <!-- /header -->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
+	    <div class="offcanvas-header">
+	        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	    </div>
+	    <div class="offcanvas-body">
+	        <ul>
+	            <li><a href="javascript:void(0);" class="animated_link active">Privacy Policy</a></li>
+	            <li><a href="/support" class="animated_link">Support</a></li>
+	            <li><a href="/accounts/register-as-vendor/" class="animated_link">Register As A Vendor</a></li>
+	            <!--<li><a href="javascript:void(0);" class="animated_link">Dashboard</a></li>-->
+	            <!--<li><a href="review.html" class="animated_link">Review</a></li>-->
+	            <!--<li><a href="quotation.html" class="animated_link">Quotation</a></li>-->
+	        </ul>
+	        <!--<hr>-->
+	        <!--<ul>-->
+	        <!--    <li><a href="about.html" class="animated_link">About</a></li>-->
+	        <!--    <li><a href="contact.html" class="animated_link">Contacts</a></li>-->
+	        <!--    <li><a href="#0" class="animated_link">Purchase this template</a></li>-->
+	        <!--</ul>-->
+	    </div>
+	</div>
+	<!-- /offcanvas nav -->
+	<div class="container">
+    	<div class="container-fluid d-flex flex-column my-auto" style="padding-top:20px;">
+            {% autoescape off %}{{policy.body}}{% endautoescape %}
+        </div>
+    </div>
+<div id="toast"></div>
+    <footer>
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <p>© 2021 UMerchant | <a href="http://pywe.org">By Pywe</a></p>
+                </div>
+                <div class="col-sm-6 text-md-end">
+                    <a class="btn_help btn" href="#modal-help" id="modal_h"><i class="bi bi-question-circle"> Help</i></a>
+                </div>
+            </div>
+            <!-- /Row -->
+        </div>
+        <!-- /Container -->
+    </footer>
+    <!-- /Footer -->
+
+</div>
+<!-- /flex-column -->
+
+<!-- Help form Popup -->
+<div id="modal-help" class="custom-modal zoom-anim-dialog mfp-hide">
+    <div class="small-dialog-header">
+        <h3>Ask Us Anything</h3>
+        <p class="mb-3">Please fill the form with your questions and<br>we will reply soon!</p>
+    </div>
+    <div id="message-help"></div>
+    <form method="post" action="#" id="helpform" autocomplete="off">
+        <div class="modal-wrapper">
+            <div class="mb-3 form-floating">
+                <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Full Name">
+                <label for="fullname">Full Name</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <input type="email" name="email_help" id="email_help" class="form-control" placeholder="Email Address">
+                <label for="email_help">Email Address</label>
+            </div>
+            <div class="mb-3 form-floating">
+                <textarea name="message_help" id="message_help" class="form-control" placeholder="Your Message"></textarea>
+                <label for="message_help">Your Message</label>
+            </div>
+            <div class="mb-5 form-floating">
+                <input class="form-control" type="text" name="verify_help" id="verify_help" placeholder="Are you human? 3 + 1 =">
+                <label for="verify_help">Are you human? 3 + 1 =</label>
+            </div>
+            <div class="text-center submit"><input type="submit" value="Submit" class="btn_1" id="submit-help"></div>
+        </div>
+    </form>
+</div>
+<!-- /Help form Popup -->
+
+<!-- Modal terms -->
+<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="termsLabel">Terms and conditions</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in <strong>nec quod novum accumsan</strong>, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus. Lorem ipsum dolor sit amet, <strong>in porro albucius qui</strong>, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+                <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+            </div>
+        </div>
+        <!-- /modal-content -->
+    </div>
+    <!-- /modal-dialog -->
+</div>
+<!-- /modal -->
+
+<!-- COMMON SCRIPTS -->
+<script src="/static/register/static/js/common_scripts.min.js"></script>
+<script src="/static/register/static/js/common_functions.js"></script>
+<script src="/static/register/static/assets/validate.js"></script>
+
+<!-- SPECIFIC SCRIPTS -->
+<!--<script src="/static/register/static/js/reservation_wizard_func.js"></script>-->
+<script src="/static/register/static/js/daterangepicker_func.js"></script>
+<script src="https://pharst.pywe.org/static/js/axios.min.js"></script>
+<script>
+function buildForm(id){
+   let myForm = document.getElementById(id);
+   let formData = new FormData(myForm);
+   //This will build the form from name, value pairs
+   var obj = {}
+   var all = []
+   for(var pair of formData.entries()){
+       var name = pair[0]
+       var val = pair[1]
+       obj[name]=val
+   }
+   return obj
+}
+function exists(ele){if (ele !== null && ele !== undefined && ele !== "null"){return true}else{return false}};
+   function toast(msg,time) {
+   var x = document.getElementById("toast");
+   x.innerHTML = msg;
+   x.className = "show";
+   setTimeout(function(){ x.className = x.className.replace("show", ""); }, time);
+   }
+
+function registerUser(){
+    toast("Creating account...",3000);
+    var form = buildForm("wrapped");
+    form.notification_token = "no-key";
+    form.as_vendor = true;
+    axios.post('/api/v1/accounts/create-user/',form)
+		.then(function (response) {
+			console.log(response);
+			var d = response.data
+			if(d.success){
+				// we are done registering user, let create a shop now
+				window.form = form;
+				window.form.owner = d.data.user.id;
+				createShop();
+			}else{
+                console.log("not successful")
+			 //   $('#preloader').delay(350).fadeOut('slow');
+                $("#loader_form").fadeOut();
+                toast(d.message,5000);
+			}
+		})
+		.catch(function (error) {
+			console.log(error);
+			// toast("Sorry, an error occured",5000);
+			if (exists(error.response)){
+			console.log(error.response.data);
+			}
+		});
+}
+
+function createShop(){
+    toast("Creating Your Shop...",5000);
+    var form = window.form;
+    axios.post('/api/v1/market/create-shop/',form)
+		.then(function (response) {
+			console.log(response.data);
+			if(response.data.success){
+				// we are done creatung shop, let's upload files for the shop
+				const myfiles = [$("#certificate").prop('files')[0],$("#ghana_card").prop('files')[0],$("#logo").prop('files')[0]];
+				console.log(myfiles);
+				var name = response.data.data.name;
+                addFiles(myfiles,"/api/v1/market/add-shop-files/"+response.data.data.id+"/",true,name);
+			}else{
+			    console.log("not successful")
+			 //   $('#preloader').delay(350).fadeOut('slow');
+                $("#loader_form").fadeOut();
+                toast(d.message,3000);
+			}
+		})
+		.catch(function (error) {
+		    $("#loader_form").fadeOut();
+			console.log(error);
+			// toast("Sorry, an error occured",5000);
+			if (exists(error.response)){
+			console.log(error.response.data);
+			}
+		});
+};
+
+
+const addFiles = (files,url,final,name) => {
+    // toaster("Uploading files...",2000);
+    const API_ENDPOINT = url;
+    const request = new XMLHttpRequest();
+    const formData = new FormData();
+    request.open("POST", API_ENDPOINT, true);
+    request.onreadystatechange = () => {
+      if (request.readyState === 4 && request.status === 200) {
+        var resp = JSON.parse(request.responseText);
+        if(resp.success){
+            $("#loader_form").fadeOut();
+             toast("All Done, Thank You!",3000);
+             window.location.assign("/accounts/register-done/"+name);
+
+        }else{
+            console.log(resp);
+        //   window.myform.files = false;
+        //   myRequest(window.myform);
+        }
+        // this is how we know the files have been uploaded
+
+      }else if(request.readyState === 4){
+        //  toaster("Uploaded...",2000);
+      }else{
+          console.log(request.responseText)
+      }
+    };
+    if(files.length > 0){
+    for (let i = 0; i < files.length; i++) {
+      formData.append(files[i].name, files[i])
+    }
+    request.send(formData);
+}
+  };
+
+
+  	// Submit loader mask
+	var form = $("form#wrapped");
+	form.on('submit', function (event) {
+	    event.preventDefault();
+		form.validate();
+		if (form.valid()) {
+			$("#loader_form").fadeIn();
+			console.log(buildForm("wrapped"));
+			registerUser();
+		}
+	});
+
+
+</script>
+
+</body>
+</html>

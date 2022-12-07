@@ -1,0 +1,123 @@
+@import 'variables';
+@import 'mixin';
+
+/*-------- COLOR NAVY--------*/
+$color-1: #4a5d7d;
+
+
+/*-------- Preloader --------*/
+[data-loader="circle-side"] {
+	border: 2px solid $color-1;
+}
+[data-loader="circle-side-2"] {
+	border: 2px solid $color-1;
+}
+
+/*-------- Typography --------*/
+a.animated_link {
+	&:before {
+		background-color: $color-1;
+	}
+}
+
+a.animated_link.active {
+	&:before {
+		background-color: $color-1;
+	}
+}
+
+/*General links color*/
+a {	
+	color:$color-1;
+	&:hover, &:focus {color: #111;text-decoration: none; outline:none;}
+}
+
+
+/*-------- Buttons --------*/
+a.btn_1,
+.btn_1 {
+    color: #fff;
+    background: $color-1;
+    @include box-shadow (0px 10px 40px -10px rgba(74, 93, 125, 0.5));
+}
+
+a.btn_nav{
+	color: #111;
+	&:hover { color: $color-1;}
+}
+
+a.btn_help{
+	background-color: #ddd;
+	&:hover {background-color: $color-1; color: #fff;}
+	&:focus {box-shadow: none;}
+}
+
+/*-------- Structure --------*/
+#social {
+	ul {
+		li {
+			a {
+				&:hover {
+					color: $color-1;
+				}
+			}
+		}
+	}
+}
+
+/*-------- Carousel Nav --------*/
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+	background: $color-1!important;
+}
+
+/*-------- Datepicker --------*/
+.daterangepicker td.in-range {
+    background-color: #e4e7ec!important;
+}
+
+.daterangepicker td.active, .daterangepicker td.active:hover {
+    background-color: $color-1!important;
+}
+
+/*-------- Forms --------*/
+input.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+	border-color: rgba(74, 93, 125, 0.2);
+	box-shadow: 0 0 0 0.3rem rgba(74, 93, 125, 0.05);
+}
+.checkbox_radio_container input[type="checkbox"]:checked, .checkbox_radio_container input[type="radio"]:checked {
+    & ~ .wrapper {
+		background-color: $color-1;
+	}
+}
+
+.container_check {
+	input {
+		&:checked~.checkmark {
+			background-color: $color-1;
+		}
+	}
+}
+
+.checkbox_radio_container {
+
+    .radio,
+    .checkbox {
+        &:after {
+            background: $color-1;
+        }
+
+        &:before {
+            background: $color-1;
+        }
+    }
+}
+
+
+#message-help {
+    .error_message {
+        color: $color-1;
+    }
+}

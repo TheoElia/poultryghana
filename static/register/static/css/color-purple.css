@@ -1,0 +1,105 @@
+/*-------- COLOR PURPLE--------*/
+/*-------- Preloader --------*/
+[data-loader="circle-side"] {
+  border: 2px solid #6449e7;
+}
+
+[data-loader="circle-side-2"] {
+  border: 2px solid #6449e7;
+}
+
+/*-------- Typography --------*/
+a.animated_link:before {
+  background-color: #6449e7;
+}
+
+a.animated_link.active:before {
+  background-color: #6449e7;
+}
+
+/*General links color*/
+a {
+  color: #6449e7;
+}
+a:hover, a:focus {
+  color: #111;
+  text-decoration: none;
+  outline: none;
+}
+
+/*-------- Buttons --------*/
+a.btn_1,
+.btn_1 {
+  color: #fff;
+  background: #6449e7;
+  -webkit-box-shadow: 0px 10px 40px -10px rgba(100, 73, 213, 0.5);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(100, 73, 213, 0.5);
+  box-shadow: 0px 10px 40px -10px rgba(100, 73, 213, 0.5);
+}
+
+a.btn_nav {
+  color: #111;
+}
+a.btn_nav:hover {
+  color: #6449e7;
+}
+
+a.btn_help {
+  background-color: #ddd;
+}
+a.btn_help:hover {
+  background-color: #6449e7;
+  color: #fff;
+}
+a.btn_help:focus {
+  box-shadow: none;
+}
+
+/*-------- Structure --------*/
+#social ul li a:hover {
+  color: #6449e7;
+}
+
+/*-------- Carousel Nav --------*/
+.owl-theme .owl-dots .owl-dot.active span,
+.owl-theme .owl-dots .owl-dot:hover span {
+  background: #6449e7 !important;
+}
+
+/*-------- Datepicker --------*/
+.daterangepicker td.in-range {
+  background-color: #e8e4fb !important;
+}
+
+.daterangepicker td.active, .daterangepicker td.active:hover {
+  background-color: #6449e7 !important;
+}
+
+/*-------- Forms --------*/
+input.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+  border-color: rgba(100, 73, 213, 0.2);
+  box-shadow: 0 0 0 0.3rem rgba(100, 73, 213, 0.05);
+}
+
+.checkbox_radio_container input[type="checkbox"]:checked ~ .wrapper, .checkbox_radio_container input[type="radio"]:checked ~ .wrapper {
+  background-color: #6449e7;
+}
+
+.container_check input:checked ~ .checkmark {
+  background-color: #6449e7;
+}
+
+.checkbox_radio_container .radio:after,
+.checkbox_radio_container .checkbox:after {
+  background: #6449e7;
+}
+.checkbox_radio_container .radio:before,
+.checkbox_radio_container .checkbox:before {
+  background: #6449e7;
+}
+
+#message-help .error_message {
+  color: #6449e7;
+}
