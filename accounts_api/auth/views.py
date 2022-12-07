@@ -9,7 +9,7 @@ from api.utils import ExtendedEncoderAllFields
 from django.shortcuts import redirect
 from django.contrib.auth.models import Group
 
-from poultry.models import Farm
+from poultry.models import Farm, VetShop
 
 
 class Error(Exception):
@@ -92,6 +92,19 @@ def create_account(request):
                 except Exception:
                     pass
                 user_obj["farm"]=farm
+            if user.user_type == "vet_officer":
+                user.is_staff = True
+                user.save()
+                my_group = Group.objects.get(name='Vet Officers') 
+                my_group.user_set.add(user)
+                my_group.save()
+                # does the farmer have a farm obj in the system?
+                shop = None
+                try:
+                    shop = VetShop.objects.get(owner=user)
+                except Exception:
+                    pass
+                user_obj["shop"]=shop
             resp["user"]=user_obj
     else:
         resp = data
@@ -122,8 +135,8 @@ def login_user(request):
             # is a normal user?
             resp["success"]=True
             resp["message"]="login successful!"
-            farm = None
             user_obj = model_to_dict(user)
+            farm = None
             user_obj["farm"]=farm
             if user.user_type == "poultry_farmer":
                 # does the farmer have a farm obj in the system?
@@ -132,6 +145,16 @@ def login_user(request):
                 except Exception:
                     pass
                 user_obj["farm"]=farm
+            resp["user"]=user_obj
+            shop = None
+            user_obj["shop"]=shop
+            if user.user_type == "vet_officer":
+                # does the farmer have a farm obj in the system?
+                try:
+                    shop = VetShop.objects.get(owner=user)
+                except Exception:
+                    pass
+                user_obj["shop"]=shop
             resp["user"]=user_obj
         else:
             resp["success"]=False

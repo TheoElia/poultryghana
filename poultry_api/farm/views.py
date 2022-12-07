@@ -5,7 +5,7 @@ import json
 from api.utils import ExtendedEncoderAllFields
 from django.db.models import Sum
 
-from poultry.models import Farm
+from poultry.models import Farm, Record, VetShop
 
 from django.shortcuts import render,redirect,HttpResponse
 import json
@@ -35,22 +35,44 @@ def get_poultry_records(request):
     if data.get("success"):
         validated_data = data.get("validated_data")
         # get farm, prefetch records
-        farm = Farm.objects.filter(id=int(validated_data.get("farm"))).prefetch_related("records")
+        farm = Farm.objects.filter(id=int(validated_data.get("farm"))).prefetch_related("record_records")
+        
+        if farm:
+            farm = farm[0] 
+        resp["success"]=True
+        resp["records"]=[i for i in farm.records.all()]
+    else:
+        resp = data
+    dump = json.dumps(resp,cls=ExtendedEncoderAllFields)
+    return HttpResponse(dump, content_type='application/json')
+
+
+@csrf_exempt
+def get_poultry_record_records(request):
+    resp = {}
+    fields = [
+        "record"
+        ]
+    data = hydrate(request.body,fields)
+    if data.get("success"):
+        validated_data = data.get("validated_data")
+        # get farm, prefetch records
+        record = Record.objects.filter(id=int(validated_data.get("record"))).prefetch_related("weekly_records")
         average_mortality = 0
         average_egg_production = 0
         avg_egg_prod_morn = 0
         avg_egg_prod_aft = 0
         avg_egg_prod_evn = 0
-        if farm:
-            farm = farm[0]
-            total_mortality = farm.records.aggregate(total=Sum("mortality"))
-            total_count = farm.records.count()
+        if record:
+            record = record[0]
+            total_mortality = record.weekly_records.aggregate(total=Sum("mortality"))
+            total_count = record.weekly_records.count()
             if total_count == 0:
                 total_count = 1
             average_mortality = total_mortality.get("total") or 0/total_count
-            total_egg_prod_morn = farm.records.aggregate(total=Sum("egg_production_morning")).get("total") or 0
-            total_egg_prod_aft = farm.records.aggregate(total=Sum("egg_production_afternoon")).get("total") or 0
-            total_egg_prod_evn = farm.records.aggregate(total=Sum("egg_production_evening")).get("total") or 0
+            total_egg_prod_morn = record.weekly_records.aggregate(total=Sum("egg_production_morning")).get("total") or 0
+            total_egg_prod_aft = record.weekly_records.aggregate(total=Sum("egg_production_afternoon")).get("total") or 0
+            total_egg_prod_evn = record.weekly_records.aggregate(total=Sum("egg_production_evening")).get("total") or 0
             avg_egg_prod_morn = total_egg_prod_morn/total_count
             avg_egg_prod_aft = total_egg_prod_aft/total_count
             avg_egg_prod_evn = total_egg_prod_evn/total_count
@@ -63,8 +85,29 @@ def get_poultry_records(request):
             "average_egg_production":average_egg_production
         }
         resp["success"]=True
-        resp["records"]=[i for i in farm.records.all()]
+        resp["records"]=[i for i in record.weekly_records.all()]
         resp["summary"]=summary
+    else:
+        resp = data
+    dump = json.dumps(resp,cls=ExtendedEncoderAllFields)
+    return HttpResponse(dump, content_type='application/json')
+
+
+@csrf_exempt
+def get_shop_products(request):
+    resp = {}
+    fields = [
+        "shop"
+        ]
+    data = hydrate(request.body,fields)
+    if data.get("success"):
+        validated_data = data.get("validated_data")
+        # get farm, prefetch records
+        shop = VetShop.objects.filter(id=int(validated_data.get("shop"))).prefetch_related("products")
+        if shop:
+            shop = shop[0]
+        resp["success"]=True
+        resp["products"]=[i for i in shop.products.all()]
     else:
         resp = data
     dump = json.dumps(resp,cls=ExtendedEncoderAllFields)
@@ -84,10 +127,10 @@ def search_api(request):
         # farms
         farms = Farm.objects.filter(name__icontains=query)
         # vet shops
-        shops = []
+        shops = VetShop.objects.filter(name__icontains=query)
         resp["results"] = {
             "farms":[i for i in farms],
-            "shops":shops
+            "shops":[i for i in shops]
         }
         resp["success"]=True
     else:

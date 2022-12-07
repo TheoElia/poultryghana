@@ -537,11 +537,17 @@
 												<thead class="table-head">
 													<tr>
 														<th class="bg-transparent border-bottom-0 wp-15">Pen No</th>
-														<th class="bg-transparent border-bottom-0">Date Received</th>		
-														<th class="bg-transparent border-bottom-0">Month</th>
-														<th class="bg-transparent border-bottom-0">Weight at Layer</th>
-														<th class="bg-transparent border-bottom-0">Breed</th>
-														<th class="bg-transparent border-bottom-0 no-btn">Action</th>
+														<th class="bg-transparent border-bottom-0">Date</th>
+														<th class="bg-transparent border-bottom-0">Age (Wks)</th>		
+														<th class="bg-transparent border-bottom-0">Egg Production (Mrn)</th>
+														<th class="bg-transparent border-bottom-0">Egg Production (Aft)</th>
+														<th class="bg-transparent border-bottom-0">Egg Production (Evn)</th>
+														<th class="bg-transparent border-bottom-0">Water</th>
+														<th class="bg-transparent border-bottom-0">Number of Animals</th>
+														<th class="bg-transparent border-bottom-0">Mortality</th>
+														<th class="bg-transparent border-bottom-0">Medication</th>
+														<th class="bg-transparent border-bottom-0">Remarks</th>
+												
 													</tr>
 												</thead>
 												<tbody class="table-body" >
@@ -1073,25 +1079,22 @@
 	window.query = null;
 
     function dashboardData(data) {
+        // console.log(data);
+        var summary = data.summary;
+        // var order = data.summary.orders;
+        // var product = data.summary.products;
+        $("#avg-mortality-rate").html(`${summary.average_mortality}%`);
+        $("#avg-egg-production").html(`${summary.average_egg_production}`);
+        $("#avg-egg-production-morning").html(`${summary.average_egg_production_morning} avg. morning`);
+		$("#avg-egg-production-afternoon").html(`${summary.average_egg_production_afternoon} avg. afternoon`);
+		$("#avg-egg-production-evening").html(`${summary.average_egg_production_evening} avg. evening`);
+
+        
          data.records.forEach(element => {
             //  console.log(element);
              var html = constructOrderTableRow(element);
             //  console.log(html);
              table.row.add(html).draw(false);
-            //  $("#orders-list").append(html);
-         });
-    };
-
-	function dashboardShopData(data) {
-        // console.log(data);
-        // var summary = data.summary;
-        
-        // console.log(table);
-         data.products.forEach(element => {
-            //  console.log(element);
-             var html = constructProductTableRow(element);
-            //  console.log(html);
-             table2.row.add(html).draw(false);
             //  $("#orders-list").append(html);
          });
 
@@ -1102,6 +1105,8 @@
         // }, 2000);
 
     };
+
+
 
     // table.row.add([sale.dated, sale.invoice_no, sale.total_amount, `<a onclick='getSale("${sale.invoice_no}")' class="btn btn-sm btn-white text-success me-2" data-bs-toggle="modal" data-bs-target="#detail_achat"><i
     //                                     class="far fa-eye me-1"></i> Details</a>`]).draw(false);
@@ -1114,12 +1119,11 @@
     //     				</div>`
 
     function constructOrderTableRow(obj){
-        var data = [obj.pen_no,obj.date_received,obj.month,`${obj.weight_at_layer}kg`,obj.breed,`<a href="/dashboard/${obj.pen_no}/" class="btn btn-sm btn-primary">View Records</a>`];
+        var data = ["{{record.pen_no}}",obj.date,`${obj.age} weeks`,obj.egg_production_morning,obj.egg_production_afternoon,obj.egg_production_evening,obj.water,obj.no_of_animals,obj.mortality,obj.medication,obj.remarks];
         return data;
     };
 
 	function constructProductTableRow(obj){
-		
         var data = [obj.name,obj.price,obj.description,`<a href="javascript:void(0);" class="btn btn-sm btn-primary">Take Action</a>`];
         return data;
     };
@@ -1128,30 +1132,13 @@
 		var user = JSON.parse(localStorage.getItem("user"));
 		console.log(user)
 		if(exists(user)){
-			if(exists(user.farm)){
-				$("#poultry-records").attr("hidden",false);
-				$("#summary").attr("hidden",true);
+			$("#poultry-records").attr("hidden",false);
 				table = $('#data-table').DataTable();
-				var url = "/api/v1/poultry/farm/get-poultry-records/";
+				var url = "/api/v1/poultry/farm/get-poultry-record-records/";
 				var form = {
-					farm:user.farm.id
+					record:"{{record.id}}"
 				}
-				makeApiRequest(dashboardData, url, form);
-			}else{
-				if(exists(user.shop)){
-					$("#shop-products").attr("hidden",false);
-					$("#summary").attr("hidden",true);
-					table2 = $('#data-products-table').DataTable();
-					var url = "/api/v1/poultry/farm/get-shop-products/";
-					var form = {
-						shop:user.shop.id
-					}
-					makeApiRequest(dashboardShopData, url, form);
-				}else{
-					window.location.assign("/login")
-				}
-				
-			}
+			makeApiRequest(dashboardData, url, form);
 		
 		}else{
 			window.location.assign("/login")

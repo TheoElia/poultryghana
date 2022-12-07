@@ -1,0 +1,128 @@
+{% extends "accounts/base.html" %}
+{% block content %}
+<div class="app-content main-content mt-0">
+					<div class="side-app">
+						<!-- CONTAINER -->
+						<div class="main-container container-fluid">
+
+							<!-- PAGE-HEADER -->
+							<div class="page-header">
+								<div>
+									<h1 class="page-title">Add Your Shop</h1>
+								</div>
+								<div class="ms-auto pageheader-btn">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item"><a href="javascript:void(0);">Vet Shop Manager</a></li>
+										<li class="breadcrumb-item active" aria-current="page">Add Your Shop</li>
+									</ol>
+								</div>
+							</div>
+							<!-- PAGE-HEADER END -->
+				<!-- row -->
+							<div class="row row-sm">
+								<div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
+									<div class="card box-shadow-0">
+										<div class="card-header border-bottom">
+											<h3 class="card-title">Create A Shop to Manage</h3>
+										</div>
+										<div class="card-body">
+											<p class="text-muted">Please describe your shop below</p>
+                                            {% if messages %}
+                                            {% for message in messages %}
+                                                {% if message.tags == "success" %}
+                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+													<span class="alert-inner--text">Success -- {{message}}</span>
+													<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												<script>
+													var shop =  {id:"{{shop.id}}",name:"{{shop.name}}",cover_image:"{{shop.cover_image}}"};
+													gotoDashboard(shop);
+													function gotoDashboard(shop){
+														var user = JSON.parse(localStorage.getItem("user"));
+														user.shop = shop;
+														localStorage.setItem("user",JSON.stringify(user));
+														window.location.assign("/dashboard");
+													}
+													
+												</script>
+												{% else %}
+												<div class="alert alert-danger alert-dismissible fade show" role="alert">
+													<span class="alert-inner--text">Error -- {{message}}</span>
+													<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												{% endif %}
+                                            {% endfor %}
+                                            {% endif %}
+											<form class="form-horizontal" id="add-product-form" method="POST" enctype= multipart/form-data>
+											    {% csrf_token %}
+												<div class="form-group">
+												    <label for="name">Name of Shop</label>
+													<input type="text" name="name" class="form-control" id="name" placeholder="Shop Name" required>
+												</div>
+												<div class="form-group">
+												    <label for="latitude">Farm's (Location Coordinates) Latitude</label>
+													<input type="number" name="latitude" class="form-control" id="latitude" step="any" placeholder="Latitude" required>
+												</div>
+												<div class="form-group">
+												    <label for="longitude">Farm's (Location Coordinates) Longitude</label>
+													<input type="number" name="longitude" class="form-control" id="longitude" step="any" placeholder="Longitude" required>
+												</div>
+												<div class="form-group"><button onclick="getLocation()" class="btn btn-secondary">Get Current Location</button></div>
+												
+												
+												<div class="form-group">
+												    <label for="phone">Phone Number (For Calls)</label>
+													<input type="tel" name="phone" min="1" class="form-control" id="phone" placeholder="Phone Number" required>
+												</div>
+												<div class="form-group">
+												    <label for="address">Detailed Address</label>
+													<textarea class="form-control mb-4" placeholder="Give a detailed address" rows="3" name="address" id="address" required></textarea>
+												</div>
+												<!-- <input type="number" name="shop" class="form-control" id="shop" placeholder="Shop" hidden> -->
+                                                <div class="form-group">
+													<label for="cover_image" class="form-label">Shop Cover Image</label>
+													<input class="form-control file-input" name="cover_image" type="file" id="cover_image" required>
+												</div>
+												<div class="form-group mt-3">
+													<div>
+														<button type="submit" class="btn btn-primary">Add My Shop</button>
+														<a href="/dashboard" class="btn btn-secondary">Cancel</a>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- row -->
+					</div>
+				</div>
+		</div>
+<script src="/static/dashboards/js/jquery.min.js"></script>
+<script>
+    function getLocation() {
+		$("#latitude").attr("placeholder","Getting latitude...")
+		$("#longitude").attr("placeholder","Getting longitude...")
+		if (navigator.geolocation) {
+		  navigator.geolocation.getCurrentPosition(showPosition);
+		} else {
+		  x.innerHTML = "Geolocation is not supported by this browser.";
+		}
+	  }
+	  
+	  function showPosition(position) {
+		$("#latitude").val(position.coords.latitude);
+		$("#longitude").val(position.coords.longitude);
+	  }
+</script>
+
+
+
+
+
+{% endblock content %}

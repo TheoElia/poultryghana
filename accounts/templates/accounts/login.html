@@ -341,6 +341,14 @@ function loginUser(){
                             window.location.assign("/add-farm");
                         }
                     }
+                    if(d.user.user_type == "vet_officer"){
+                        if(exists(d.user.shop)){
+                            window.location.assign("/dashboard/");
+                        }else{
+                            window.location.assign("/add-shop");
+                        }
+                    }
+                    
                     
                 }
 			}else{
