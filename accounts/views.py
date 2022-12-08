@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from poultry.models import Farm, Record, VetShop
+from poultry.models import Farm, Product, Record, VetShop
 from django.contrib import messages
 
 # Create your views here.
@@ -11,6 +11,13 @@ def hydrate_request_data(body):
         validated_data[key]=val
     validated_data.pop("csrfmiddlewaretoken")
     return validated_data
+
+
+def index(request):
+    args = {}
+    template = "landing/index.html"
+    args["products"] = Product.objects.all()
+    return render(request,template,args)
 
 def login_page(request):
     args = {}
