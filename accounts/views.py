@@ -19,6 +19,13 @@ def index(request):
     args["products"] = Product.objects.all()
     return render(request,template,args)
 
+
+def shop(request):
+    args = {}
+    template = "landing/shop-grid.html"
+    args["products"] = Product.objects.all()
+    return render(request,template,args)
+
 def login_page(request):
     args = {}
     template = "accounts/login.html"

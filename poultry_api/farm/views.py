@@ -65,7 +65,9 @@ def get_poultry_record_records(request):
         avg_egg_prod_evn = 0
         if record:
             record = record[0]
-            no_of_birds = record.weekly_records.aggregate(total=Sum("no_of_animals")).get("total") or 0
+            no_of_birds = record.no_of_birds
+            if no_of_birds is None:
+                no_of_birds = 1
             total_mortality = record.weekly_records.aggregate(total=Sum("mortality")).get("total") or 0
             total_count = record.weekly_records.count()
             if total_count == 0:

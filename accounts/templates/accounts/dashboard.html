@@ -542,6 +542,7 @@
 														<th class="bg-transparent border-bottom-0">Weight at Layer</th>
 														<th class="bg-transparent border-bottom-0">Breed</th>
 														<th class="bg-transparent border-bottom-0">Production Type</th>
+														<th class="bg-transparent border-bottom-0">No. of Birds</th>
 														<th class="bg-transparent border-bottom-0 no-btn">Action</th>
 													</tr>
 												</thead>
@@ -1115,7 +1116,7 @@
     //     				</div>`
 
     function constructOrderTableRow(obj){
-        var data = [obj.pen_no,obj.date_received,obj.month,`${obj.weight_at_layer}kg`,obj.breed,obj.production_type,`<a href="/dashboard/${obj.pen_no}/" class="btn btn-sm btn-primary">View Records</a>`];
+        var data = [obj.pen_no,obj.date_received,obj.month,`${obj.weight_at_layer}kg`,obj.breed,obj.production_type,obj.no_of_birds,`<a href="/dashboard/${obj.pen_no}/" class="btn btn-sm btn-primary">View Records</a>`];
         return data;
     };
 

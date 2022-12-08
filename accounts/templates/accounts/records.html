@@ -545,7 +545,6 @@
 														<th class="bg-transparent border-bottom-0">Egg Production (Aft)</th>
 														<th class="bg-transparent border-bottom-0">Egg Production (Evn)</th>
 														<th class="bg-transparent border-bottom-0">Water</th>
-														<th class="bg-transparent border-bottom-0">Number of Animals</th>
 														<th class="bg-transparent border-bottom-0">Mortality</th>
 														<th class="bg-transparent border-bottom-0">Medication</th>
 														<th class="bg-transparent border-bottom-0">Remarks</th>
@@ -1121,7 +1120,7 @@
     //     				</div>`
 
     function constructOrderTableRow(obj){
-        var data = ["{{record.pen_no}}",obj.date,`${obj.age} weeks`,obj.culls_plus,obj.culls_minus,obj.egg_production_morning,obj.egg_production_afternoon,obj.egg_production_evening,obj.water,obj.no_of_animals,obj.mortality,obj.medication,obj.remarks];
+        var data = ["{{record.pen_no}}",obj.date,`${obj.age} weeks`,obj.culls_plus,obj.culls_minus,obj.egg_production_morning,obj.egg_production_afternoon,obj.egg_production_evening,obj.water,obj.mortality,obj.medication,obj.remarks];
         return data;
     };
 

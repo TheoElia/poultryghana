@@ -40,6 +40,7 @@ class Record(TimeStamp):
     breed = models.CharField(max_length=255,null=True)
     production_type = models.CharField(max_length=255,null=True)
     farm = models.ForeignKey(Farm,on_delete=models.CASCADE,null=True,related_name="records")
+    no_of_birds = models.IntegerField(null=True)
 
     def __str__(self):
         return f"{self.farm.name} - {self.pen_no}"
@@ -51,7 +52,6 @@ class PoultryRecord(TimeStamp):
     culls_minus = models.FloatField(null=True)
     date = models.DateField(null=True)
     age = models.FloatField(null=True,help_text="in weeks")
-    no_of_animals = models.IntegerField(null=True)
     water = models.FloatField(null=True)
     mortality = models.FloatField(null=True)
     egg_production_morning = models.IntegerField(null=True)
