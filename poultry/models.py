@@ -11,7 +11,7 @@ class Farm(TimeStamp):
     address = models.CharField(max_length=255,null=True)
     phone = models.CharField(max_length=14,null=True)
     cover_image = models.FileField(null=True,upload_to="farms")
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,null=True)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,null=True,blank=True)
 
 
     def __str__(self):
@@ -47,19 +47,19 @@ class Record(TimeStamp):
 
 
 class PoultryRecord(TimeStamp):
-    record = models.ForeignKey(Record,null=True,on_delete=models.PROTECT,related_name="weekly_records")
-    culls_plus = models.FloatField(null=True)
-    culls_minus = models.FloatField(null=True)
-    date = models.DateField(null=True)
-    age = models.FloatField(null=True,help_text="in weeks")
+    record = models.ForeignKey(Record,null=True,on_delete=models.PROTECT,related_name="weekly_records",blank=True)
+    culls_plus = models.FloatField(null=True,blank=True)
+    culls_minus = models.FloatField(null=True,blank=True)
+    date = models.DateField(null=True,blank=True)
+    age = models.FloatField(null=True,help_text="in weeks",blank=True)
     water = models.FloatField(null=True)
     mortality = models.FloatField(null=True)
     egg_production_morning = models.IntegerField(null=True)
     egg_production_afternoon = models.IntegerField(null=True)
     egg_production_evening = models.IntegerField(null=True)
-    medication = models.CharField(max_length=255,null=True)
-    remarks = models.TextField(null=True)
-    farm = models.ForeignKey(Farm,on_delete=models.CASCADE,null=True,related_name="record_records")
+    medication = models.CharField(max_length=255,null=True,blank=True)
+    remarks = models.TextField(null=True,blank=True)
+    farm = models.ForeignKey(Farm,on_delete=models.CASCADE,null=True,related_name="record_records",blank=True)
 
 
     def __str__(self):
@@ -69,9 +69,10 @@ class PoultryRecord(TimeStamp):
 class Product(TimeStamp):
     name = models.CharField(max_length=255,null=True)
     price = models.FloatField(null=True)
-    description = models.TextField(null=True)
+    description = models.TextField(null=True,blank=True)
     cover_image = models.FileField(null=True,upload_to="products")
-    shop = models.ForeignKey(VetShop,null=True,on_delete=models.CASCADE,related_name="products")
+    shop = models.ForeignKey(VetShop,null=True,on_delete=models.CASCADE,related_name="products",blank=True)
+    farm = models.ForeignKey(Farm,null=True,on_delete=models.CASCADE,related_name="products",blank=True)
 
     def __str__(self):
         return f"{self.shop.name} - {self.name}"

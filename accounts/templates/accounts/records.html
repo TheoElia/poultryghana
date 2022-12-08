@@ -1172,7 +1172,7 @@
 												<h3 class="mb-2 fw-semibold">${obj.name}</h3>
 												<p class="text-muted fs-13 mb-0">${obj.address}</p>
 												<p class="text-muted mb-0 mt-2 fs-12">
-													<a href="javascript:void(0);" class="btn btn-sm btn-primary">Direction to Farm</a>
+													<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" class="btn btn-sm btn-primary">Direction to Farm</a>
                                                     <a href="tel:${obj.phone}" class="btn btn-sm btn-primary">Call Farm</a>
 												</p>
 											</div>
@@ -1194,7 +1194,8 @@
 												<h3 class="mb-2 fw-semibold">${obj.name}</h3>
 												<p class="text-muted fs-13 mb-0">${obj.address}</p>
 												<p class="text-muted mb-0 mt-2 fs-12">
-                                                    <a href="javascript:void(0);" class="btn btn-sm btn-primary">Checkout Products</a>
+													<a href="https://www.google.com/maps/place/${obj.latitude},${obj.longitude}" class="btn btn-sm btn-primary">Direction to Shop</a>
+                                                    <a href="/shop" class="btn btn-sm btn-primary">Checkout Products</a>
                                                     <a href="tel:${obj.phone}" class="btn btn-sm btn-primary">Call Shop</a>
                                                 </p>
 											</div>
@@ -1207,6 +1208,7 @@
 		`;
 	return html;
 	}
+
 
 	function searchAPI(){
 		var q = $("#search").val();
