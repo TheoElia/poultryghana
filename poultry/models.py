@@ -42,7 +42,7 @@ class Record(TimeStamp):
     farm = models.ForeignKey(Farm,on_delete=models.CASCADE,null=True,related_name="records")
 
     def __str__(self):
-        return f"{self.pen_no}"
+        return f"{self.farm.name} - {self.pen_no}"
 
 
 class PoultryRecord(TimeStamp):
@@ -63,7 +63,7 @@ class PoultryRecord(TimeStamp):
 
 
     def __str__(self):
-        return f"{self.record.pen_no}"
+        return f"{self.farm.name} - {self.record.pen_no}"
 
 
 class Product(TimeStamp):
@@ -74,4 +74,4 @@ class Product(TimeStamp):
     shop = models.ForeignKey(VetShop,null=True,on_delete=models.CASCADE,related_name="products")
 
     def __str__(self):
-        return f"{self.name}"
+        return f"{self.shop.name} - {self.name}"

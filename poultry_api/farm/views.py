@@ -80,11 +80,11 @@ def get_poultry_record_records(request):
             
             production_perc = ((total_egg_prod_morn +total_egg_prod_aft +total_egg_prod_evn)/no_of_birds)*100
         summary = {
-            "mortality_perc":mortality_perc,
-            "average_egg_production_morning":avg_egg_prod_morn,
-            "average_egg_production_afternoon":avg_egg_prod_aft,
-            "average_egg_production_evening":avg_egg_prod_evn,
-            "production_perc":production_perc
+            "mortality_perc":round(mortality_perc,2),
+            "average_egg_production_morning":round(avg_egg_prod_morn,2),
+            "average_egg_production_afternoon":round(avg_egg_prod_aft,2),
+            "average_egg_production_evening":round(avg_egg_prod_evn,2),
+            "production_perc":round(production_perc,2)
         }
         resp["success"]=True
         resp["records"]=[i for i in record.weekly_records.all()]
