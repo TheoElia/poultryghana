@@ -79,8 +79,8 @@
                 {% for product in products %}
 								<div class="box box-hv">
 									<div class="images hover-style">
-										<a href="/product-details/{{product.id}}"><img src="{{product.cover_image}}" alt="images"></a>
-										<div class="icon-list flex"> <a class="icon-1" href="#"><i class="far fa-search"></i></a> <a class="icon-2" href="#"><i class="fas fa-shopping-basket"></i></a> <a class="icon-3" href="#"><i class="far fa-heart"></i></a> </div>
+										<a href="/product-details/{{product.id}}"><img src="{{product.cover_image.url}}" alt="images" height="50px"></a>
+										<!-- <div class="icon-list flex"> <a class="icon-1" href="#"><i class="far fa-search"></i></a> <a class="icon-2" href="#"><i class="fas fa-shopping-basket"></i></a> <a class="icon-3" href="#"><i class="far fa-heart"></i></a> </div> -->
 										<div class="tag-text style2"> -20% </div>
 									</div>
 									<div class="content">
